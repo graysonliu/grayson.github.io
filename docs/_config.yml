@@ -25,8 +25,11 @@ description: >- # this means to ignore newlines until "baseurl:"
   Just my coding business.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://graysonliu.github.io"
-linkedin_username: liu-zijian
-github_username:  graysonliu
+
+minima:
+  social_links:
+    github: graysonliu
+    linkedin: liu-zijian
 
 # Build settings
 markdown: GFM
