@@ -30,7 +30,6 @@ github_username:  graysonliu
 
 # Build settings
 markdown: GFM
-theme: minima-graysonliu
 remote_theme: graysonliu/minima-graysonliu
 plugins:
   - jekyll-feed
