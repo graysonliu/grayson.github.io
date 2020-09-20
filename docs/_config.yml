@@ -18,13 +18,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: "Codebiz :running::thinking::sleeping:"
+title: "CodeBiz :running::thinking::sleeping:"
 author: Zijian Liu
 email: liu.zijian@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Just my coding business.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://graysonliu.github.io"
 linkedin_username: liu-zijian
@@ -32,7 +30,8 @@ github_username:  graysonliu
 
 # Build settings
 markdown: GFM
-theme: minima
+theme: minima-graysonliu
+remote_theme: graysonliu/minima-graysonliu
 plugins:
   - jekyll-feed
   - jemoji
