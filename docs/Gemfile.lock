@@ -261,7 +261,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-feed (~> 0.12)
+  jekyll-feed
   jekyll-seo-tag
   jemoji
   minima-graysonliu!

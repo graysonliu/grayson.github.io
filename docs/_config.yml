@@ -18,15 +18,17 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: "CodeBiz :running::thinking::sleeping:"
-author: Zijian Liu
-email: liu.zijian@outlook.com
+title: "CodingBiz :running::thinking::sleeping:"
+author:
+  name: Zijian Liu
+  email: liu.zijian@outlook.com
 description: >- # this means to ignore newlines until "baseurl:"
   Just my coding business.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://graysonliu.github.io"
+show_excerpts: false # set to true to show excerpts on the homepage
 
 minima:
+  date_format: "%b %-d, %Y"
+
   social_links:
     github: graysonliu
     linkedin: liu-zijian
@@ -36,8 +38,8 @@ markdown: GFM
 remote_theme: graysonliu/minima-graysonliu
 plugins:
   - jekyll-feed
-  - jemoji
   - jekyll-seo-tag
+  - jemoji
 
 # Exclude from processing.
 # The following items will not be processed, by default.
