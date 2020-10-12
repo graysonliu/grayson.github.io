@@ -1,5 +1,5 @@
 html, body, #root, .App {
-    font-size: 4vw;
+    font-size: 6vmin;
     height: 100%;
     width: 100%;
     overflow: hidden;
@@ -56,7 +56,7 @@ a:active {
 }
 
 .BottomImageLink img {
-    height: 0.5rem;
+    height: 0.75rem;
     padding: 0.1rem;
     vertical-align: middle;
 }
