@@ -74,7 +74,8 @@ class BottomImageLink extends Component {
     render() {
         return (
             <div className="BottomImageLink">
-                <a href={this.props.href}>
+                <a href={this.props.href}
+                   target='_blank'>
                     <img src={this.props.img} alt=""/>
                 </a>
             </div>
