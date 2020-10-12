@@ -1,35 +1,63 @@
-html, body, #root {
+html, body, #root, .App {
     font-size: 4vw;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
-a, a:link, a:visited {
-    color: cornflowerblue;
+table {
+    border-spacing: 0;
+}
+
+a, a:link, a:visited, a:hover {
     text-decoration: none;
+    display: flex;
 }
 
-a:hover, a:active {
+a:active {
     background-color: whitesmoke;
 }
 
-a.ImageTextLink {
-    padding: 1vw 1vw;
+.ImageTextLink {
+    margin: 0.25rem;
 }
 
-img.ImageWithinLink {
+.ImageTextLink img {
     height: 1rem;
     margin-right: 0.25rem;
     vertical-align: middle;
 }
 
-span.VerticalCenterText {
+.ImageTextLink span {
+    color: cornflowerblue;
     vertical-align: middle;
 }
 
-table.MainTable {
-    position: relative;
-    margin: auto;
+.MainTable {
+    position: absolute;
     top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.BottomImageLinkTable {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.BottomImageLinkTable table {
+    margin: auto;
+}
+
+.BottomImageLink {
+    margin: 0.25rem;
+}
+
+.BottomImageLink img {
+    height: 0.5rem;
+    padding: 0.1rem;
+    vertical-align: middle;
 }
 
