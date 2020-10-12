@@ -1,39 +1,60 @@
 import React, {Component} from "react";
 import {hot} from "react-hot-loader";
 import "./App.css";
-import Resume from './Resume.pdf'
+import file_resume from './files/Resume.pdf'
+import icon_blog from './images/blog.svg'
+import icon_resume from './images/resume.svg'
+import icon_email from './images/email.svg'
 
-class SingleLineLink extends Component {
+class ImageTextLink extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <p>
-                <a href={this.props.href}
-                   target='_blank'
-                   className="SingleLineLink">
-                    {this.props.text}
-                </a>
-            </p>);
+            <a className="ImageTextLink"
+               href={this.props.href}
+               target='_blank'>
+                <img className="ImageWithinLink"
+                     src={this.props.img}
+                     alt={this.props.text}/>
+                <span className="VerticalCenterText">
+                                {this.props.text}</span>
+            </a>);
     }
 }
 
 class App extends Component {
     render() {
         return (
-            <div>
-                <SingleLineLink
-                    href="https://graysonliu.github.io/blog"
-                    text="Blog"
-                />
-                <SingleLineLink
-                    href={Resume}
-                    text="Resume"
-                />
-            </div>
-        );
+            <table className="MainTable">
+                <tbody>
+                <tr>
+                    <td>
+                        <ImageTextLink
+                            img={icon_blog}
+                            href="https://graysonliu.github.io/blog"
+                            text="Blog"
+                        />
+                    </td>
+                    <td>
+                        <ImageTextLink
+                            img={icon_resume}
+                            href={file_resume}
+                            text="Resume"
+                        />
+                    </td>
+                    <td>
+                        <ImageTextLink
+                            img={icon_email}
+                            href="mailto:liu.zijian@outlook.com"
+                            text="Contact"
+                        />
+                    </td>
+                </tr>
+                </tbody>
+            </table>);
     }
 }
 

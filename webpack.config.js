@@ -17,8 +17,8 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
-                // for PDF files
-                test: /\.pdf$/,
+                // for images, PDF files
+                test: /\.(pdf|svg)$/,
                 use: ['file-loader']
             }
         ]
