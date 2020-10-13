@@ -9,55 +9,94 @@ table {
     border-spacing: 0;
 }
 
-a, a:link, a:visited, a:hover {
+table td {
+    padding: 0;
+}
+
+a, a:link, a:visited {
     text-decoration: none;
     display: flex;
 }
 
-a:active {
-    background-color: whitesmoke;
+.image-link img {
+    height: 0.5rem;
+    transition: 0.25s;
 }
 
-.ImageTextLink {
-    margin: 0.25rem;
+.image-link img:hover {
+    transform: scale(1.1);
 }
 
-.ImageTextLink img {
+.top-image-link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top-image-link .image-link img {
     height: 1rem;
-    margin-right: 0.25rem;
-    vertical-align: middle;
 }
 
-.ImageTextLink span {
-    color: cornflowerblue;
-    vertical-align: middle;
+.top-image-link .image-link img:hover {
+    animation-play-state: paused;
 }
 
-.MainTable {
+.main-table-image-link {
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.main-table-image-link .image-link img {
+    height: 1.75rem;
+}
+
+.main-table-image-link span {
+    font-size: 0.5rem;
+    color: black;
+    transition: opacity 0.25s;
+}
+
+.main-table {
     position: absolute;
     top: 25%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.BottomImageLinkTable {
+.bottom-image-link-table {
     position: absolute;
-    top: 85%;
+    top: 90%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.BottomImageLinkTable table {
-    margin: auto;
+.bottom-image-link {
+    padding: 0 0.5rem;
 }
 
-.BottomImageLink {
-    margin: 0.25rem;
+.github-workflow-badge .image-link img {
+    height: 100%;
+    transform: none;
 }
 
-.BottomImageLink img {
-    height: 0.75rem;
-    padding: 0.1rem;
-    vertical-align: middle;
+.right-bottom-corner {
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
 }
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotating-img {
+    animation: rotation 3s linear infinite;
+}
+
 

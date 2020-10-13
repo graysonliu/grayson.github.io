@@ -7,22 +7,55 @@ import icon_resume from './images/resume.svg'
 import icon_email from './images/email.svg'
 import icon_github from './images/github.svg'
 import icon_linkedin from './images/linkedin.svg'
+import img_thinking from './images/thinking.svg'
 
-class ImageTextLink extends Component {
+
+class ImageLink extends Component {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <div className="ImageTextLink">
+            <div className='image-link'>
                 <a href={this.props.href}
-                   target='_blank'>
-                    <img
-                        src={this.props.img}
-                        alt={this.props.text}/>
-                    <span>{this.props.text}</span>
+                   target={this.props.noNewTab ? '_self' : '_blank'}>
+                    <img src={this.props.img}
+                         alt=''
+                         className={this.props.rotating ? 'rotating-img' : ''}
+                         onMouseOver={this.props.onMouseOverImage}
+                         onMouseLeave={this.props.onMouseLeaveImage}/>
                 </a>
+            </div>);
+    }
+}
+
+class ImageLinkWithText extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {text_visible: false}
+        this.handleOnMouseOverImage = this.handleOnMouseOverImage.bind(this);
+        this.handleOnMouseLeaveImage = this.handleOnMouseLeaveImage.bind(this);
+    }
+
+    handleOnMouseOverImage() {
+        this.setState({text_visible: true});
+    }
+
+    handleOnMouseLeaveImage() {
+        this.setState({text_visible: false})
+    }
+
+    render() {
+        return (
+            <div className='main-table-image-link'>
+                <ImageLink
+                    href={this.props.href}
+                    img={this.props.img}
+                    onMouseOverImage={this.handleOnMouseOverImage}
+                    onMouseLeaveImage={this.handleOnMouseLeaveImage}/>
+                <span style={{opacity: this.state.text_visible ? 1 : 0}}>
+                    {this.props.text || ''}</span>
             </div>);
     }
 }
@@ -34,26 +67,26 @@ class MainTable extends Component {
 
     render() {
         return (
-            <div className="MainTable">
+            <div className="main-table">
                 <table>
                     <tbody>
                     <tr>
                         <td>
-                            <ImageTextLink
+                            <ImageLinkWithText
                                 img={icon_blog}
                                 href="https://graysonliu.github.io/blog"
                                 text="Blog"
                             />
                         </td>
                         <td>
-                            <ImageTextLink
+                            <ImageLinkWithText
                                 img={icon_resume}
                                 href={file_resume}
                                 text="Resume"
                             />
                         </td>
                         <td>
-                            <ImageTextLink
+                            <ImageLinkWithText
                                 img={icon_email}
                                 href="mailto:liu.zijian@outlook.com"
                                 text="Contact"
@@ -66,24 +99,6 @@ class MainTable extends Component {
     }
 }
 
-class BottomImageLink extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="BottomImageLink">
-                <a href={this.props.href}
-                   target='_blank'>
-                    <img src={this.props.img} alt=""/>
-                </a>
-            </div>
-        );
-    }
-
-}
-
 class BottomImageLinkTable extends Component {
     constructor(props) {
         super(props);
@@ -91,19 +106,23 @@ class BottomImageLinkTable extends Component {
 
     render() {
         return (
-            <div className="BottomImageLinkTable">
+            <div className="bottom-image-link-table">
                 <table>
                     <tbody>
                     <tr>
                         <td>
-                            <BottomImageLink
-                                href="https://github.com/graysonliu"
-                                img={icon_github}/>
+                            <div className='bottom-image-link'>
+                                <ImageLink
+                                    href="https://github.com/graysonliu"
+                                    img={icon_github}/>
+                            </div>
                         </td>
                         <td>
-                            <BottomImageLink
-                                href="https://www.linkedin.com/in/liu-zijian/"
-                                img={icon_linkedin}/>
+                            <div className='bottom-image-link'>
+                                <ImageLink
+                                    href="https://www.linkedin.com/in/liu-zijian"
+                                    img={icon_linkedin}/>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
@@ -114,12 +133,39 @@ class BottomImageLinkTable extends Component {
 
 }
 
+class GithubWorkflowBadge extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className={this.props.style + ' github-workflow-badge'}>
+                <ImageLink
+                    href={this.props.repo}
+                    img={this.props.badge}/>
+            </div>
+        );
+    }
+}
+
 class App extends Component {
     render() {
         return (
             <div className="App">
+                <div className='top-image-link'>
+                    <ImageLink img={img_thinking}
+                               href=''
+                               rotating={true}
+                               noNewTab={true}/>
+                </div>
                 <MainTable/>
                 <BottomImageLinkTable/>
+                <GithubWorkflowBadge
+                    style="right-bottom-corner"
+                    repo="https://github.com/graysonliu/graysonliu.github.io"
+                    badge="https://github.com/graysonliu/graysonliu.github.io/workflows/build/badge.svg"
+                />
             </div>);
     }
 }
