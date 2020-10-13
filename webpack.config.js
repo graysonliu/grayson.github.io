@@ -1,6 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
     entry: "./src/index.js",
@@ -20,7 +21,10 @@ module.exports = {
             {
                 // for images, PDF files
                 test: /\.(pdf|svg)$/,
-                use: ['file-loader']
+                loader: 'file-loader',
+                options: {
+                    name: '[path][name].[ext]',
+                }
             }
         ]
     },
@@ -33,12 +37,14 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, ""),
         port: 3000,
-        publicPath: "http://localhost:3000/dist/",
+        publicPath: "/dist/",
         hotOnly: true
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
+            title: "Zijian Liu",
             favicon: "./src/images/thinking.svg"
         })
     ]
