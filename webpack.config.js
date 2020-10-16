@@ -18,6 +18,7 @@ module.exports = {
                     {
                         loader: require.resolve('babel-loader'),
                         options: {
+                            presets: ["@babel/env"],
                             plugins: [isDevelopment && require.resolve('react-refresh/babel')]
                         }
                     }]
