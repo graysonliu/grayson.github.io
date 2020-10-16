@@ -45,7 +45,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: "Zijian Liu",
+            template: "./src/index.html",
+            // title: "Zijian Liu",
             favicon: "./src/images/thinking.svg"
         })
     ]
