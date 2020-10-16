@@ -19,12 +19,15 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
-                // for images, PDF files
                 test: /\.(pdf|svg)$/,
                 loader: 'file-loader',
                 options: {
                     name: '[path][name].[ext]',
                 }
+            },
+            {
+                test: /\.(txt|html)$/i,
+                use: 'raw-loader'
             }
         ]
     },
