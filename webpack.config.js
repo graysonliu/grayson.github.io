@@ -2,24 +2,36 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: "./src/index.js",
-    // mode: "development",
+    mode: isDevelopment ? 'development' : 'production',
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx)$/i,
                 exclude: /(node_modules|bower_components)/,
-                loader: "babel-loader",
-                options: {presets: ["@babel/env"]}
+                use: [
+                    {
+                        loader: require.resolve('babel-loader'),
+                        options: {
+                            plugins: [isDevelopment && require.resolve('react-refresh/babel')]
+                        }
+                    }]
             },
             {
-                test: /\.css$/,
+                test: /\.css$/i,
                 use: ["style-loader", "css-loader"]
             },
             {
-                test: /\.(pdf|svg)$/,
+                test: /\.s[ac]ss$/i,
+                use: ["style-loader", "css-loader", "sass-loader"]
+            },
+            {
+                test: /\.(pdf|svg)$/i,
                 loader: 'file-loader',
                 options: {
                     name: '[path][name].[ext]',
@@ -42,12 +54,13 @@ module.exports = {
         hotOnly: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        isDevelopment && new webpack.HotModuleReplacementPlugin(),
+        isDevelopment && new ReactRefreshWebpackPlugin(),
         // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "./src/index.html",
             // title: "Zijian Liu",
             favicon: "./src/images/thinking.svg"
-        })
+        }),
     ]
 };
