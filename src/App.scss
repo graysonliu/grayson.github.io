@@ -59,9 +59,10 @@ button {
 }
 
 .my-logo-header {
-  justify-content: center;
-  margin-top: 0.25rem;
-  display: flex;
+  position: fixed;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%, 0);
 
   .image-link {
     img {
