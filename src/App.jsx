@@ -1,12 +1,12 @@
 import React, {Component} from "react";
-import "./App.css";
+import "./App.scss";
 import file_resume from './files/Resume.pdf'
 import icon_blog from './images/blog.svg'
 import icon_resume from './images/resume.svg'
 import icon_email from './images/email.svg'
 import icon_github from './images/github.svg'
 import icon_linkedin from './images/linkedin.svg'
-import img_thinking from './images/thinking.svg'
+import logo_thinking from './images/thinking.svg'
 
 
 class ImageLink extends Component {
@@ -17,32 +17,40 @@ class ImageLink extends Component {
     render() {
         return (
             <div className='image-link'>
-                <a href={this.props.href}
-                   target={this.props.noNewTab ? '_self' : '_blank'}>
+                <a href={this.props.href || '#'}
+                   target={this.props.target || '_blank'}
+                >
                     <img src={this.props.img}
-                         alt=''
-                         className={this.props.rotating ? 'rotating-img' : ''}
-                         onMouseOver={this.props.onMouseOverImage}
-                         onMouseLeave={this.props.onMouseLeaveImage}/>
+                         alt={this.props.alt || ''}
+                    />
                 </a>
             </div>);
     }
 }
 
+class MyLogo extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className={this.props.style ?
+                `my-logo ${this.props.style}` :
+                'my-logo'}>
+                <ImageLink
+                    target='_self'
+                    img={logo_thinking}
+                />
+            </div>
+        );
+    }
+
+}
+
 class ImageLinkWithText extends Component {
     constructor(props) {
         super(props);
-        this.state = {text_visible: false}
-        this.handleOnMouseOverImage = this.handleOnMouseOverImage.bind(this);
-        this.handleOnMouseLeaveImage = this.handleOnMouseLeaveImage.bind(this);
-    }
-
-    handleOnMouseOverImage() {
-        this.setState({text_visible: true});
-    }
-
-    handleOnMouseLeaveImage() {
-        this.setState({text_visible: false})
     }
 
     render() {
@@ -51,10 +59,10 @@ class ImageLinkWithText extends Component {
                 <ImageLink
                     href={this.props.href}
                     img={this.props.img}
-                    onMouseOverImage={this.handleOnMouseOverImage}
-                    onMouseLeaveImage={this.handleOnMouseLeaveImage}/>
-                <span style={{opacity: this.state.text_visible ? 1 : 0}}>
-                    {this.props.text || ''}</span>
+                />
+                <div>
+                    <span>{this.props.text || ''}</span>
+                </div>
             </div>);
     }
 }
@@ -139,7 +147,9 @@ class GithubWorkflowBadge extends Component {
 
     render() {
         return (
-            <div className={this.props.style + ' github-workflow-badge'}>
+            <div className={this.props.style ?
+                `github-workflow-badge ${this.props.style}` :
+                'github-workflow-badge'}>
                 <ImageLink
                     href={this.props.repo}
                     img={this.props.badge}/>
@@ -151,13 +161,8 @@ class GithubWorkflowBadge extends Component {
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <div className='top-image-link'>
-                    <ImageLink img={img_thinking}
-                               href=''
-                               rotating={true}
-                               noNewTab={true}/>
-                </div>
+            <div className="app">
+                <MyLogo style='my-logo-header'/>
                 <MainTable/>
                 <BottomImageLinkTable/>
                 <GithubWorkflowBadge

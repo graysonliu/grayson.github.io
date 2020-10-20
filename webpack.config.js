@@ -60,8 +60,15 @@ module.exports = (env, argv) => {
             isDevelopment && new ReactRefreshWebpackPlugin(),
             !isDevelopment && new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({
-                template: "./src/template.html",
-                favicon: "./src/images/thinking.svg"
+                template: "./src/template.ejs",
+                title: "Zijian Liu",
+                favicon: "./src/images/thinking.svg",
+                meta: [
+                    {
+                        name: 'viewport',
+                        content: 'width=device-width, initial-scale=1'
+                    }
+                ],
             }),
             new SitemapPlugin('https://graysonliu.github.io', paths,
                 {skipgzip: true})

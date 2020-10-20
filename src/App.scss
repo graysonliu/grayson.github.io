@@ -1,0 +1,176 @@
+$width-high-bound: 640px;
+$width-low-bound: 320px;
+
+html, body, #root, .app {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  @media screen and (max-width: $width-low-bound) {
+    font-size: 0.05*$width-low-bound;
+  }
+  @media screen and (min-width: $width-high-bound) {
+    font-size: 0.05*$width-high-bound;
+  }
+  @media screen and (max-width: $width-high-bound) and (min-width: $width-low-bound) {
+    font-size: 5vw;
+  }
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+  border-width: 0;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+%rotating-img {
+  animation: rotation 3s linear infinite;
+}
+
+.image-link {
+  display: inline-flex;
+
+  img {
+    transition: 0.25s;
+  }
+
+  a, a:link, a:visited {
+    text-decoration: none;
+    display: flex;
+  }
+}
+
+.my-logo {
+  display: inline-flex;
+
+  .image-link {
+    img {
+      height: 0.5rem;
+    }
+  }
+}
+
+.my-logo-header {
+  justify-content: center;
+  margin-top: 0.25rem;
+  display: flex;
+
+  .image-link {
+    img {
+      height: 2rem;
+      @extend %rotating-img
+    }
+
+    @media (any-hover: hover) {
+      img:hover {
+        animation-play-state: paused;
+      }
+    }
+  }
+}
+
+table {
+  border-spacing: 0;
+}
+
+table td {
+  padding: 0;
+}
+
+a, a:link, a:visited {
+  text-decoration: none;
+  display: flex;
+}
+
+.main-table-image-link {
+  padding: 0 1.75rem;
+  text-align: center;
+
+  .image-link {
+    img {
+      height: 3.5rem;
+    }
+
+    @media (any-hover: hover) {
+      img:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    margin-bottom: 0.75rem;
+  }
+
+  span {
+    font-size: 1rem;
+    color: black;
+    transition: opacity 0.25s;
+    @media (any-hover: hover) {
+      opacity: 0;
+    }
+  }
+
+  @media (any-hover: hover) {
+    .image-link:hover + div {
+      span {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.main-table {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.bottom-image-link-table {
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.bottom-image-link {
+  padding: 0 0.5rem;
+
+  .image-link {
+    img {
+      height: 1rem;
+    }
+
+    @media (any-hover: hover) {
+      img:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.github-workflow-badge {
+  display: inline-flex;
+
+  .image-link {
+    img {
+      height: 100%;
+    }
+  }
+}
+
+.right-bottom-corner {
+  position: fixed;
+  top: 100%;
+  left: 100%;
+  transform: translate(-100%, -100%);
+}
+
+
