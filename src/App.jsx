@@ -45,7 +45,6 @@ class MyLogo extends Component {
             </div>
         );
     }
-
 }
 
 class ImageLinkWithText extends Component {

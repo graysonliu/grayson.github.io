@@ -17,9 +17,24 @@ html, body, #root, .app {
   overflow: hidden;
 }
 
+@mixin flex_justify_content {
+  display: flex;
+  justify-content: center;
+}
+
 button {
   cursor: pointer;
   border-width: 0;
+  padding: 0;
+  outline: none;
+}
+
+table {
+  border-spacing: 0;
+}
+
+table td {
+  padding: 0;
 }
 
 @keyframes rotation {
@@ -31,7 +46,7 @@ button {
   }
 }
 
-%rotating-img {
+@mixin rotating-img {
   animation: rotation 3s linear infinite;
 }
 
@@ -48,7 +63,7 @@ button {
   }
 }
 
-.my-logo {
+%my-logo-shared {
   display: inline-flex;
 
   .image-link {
@@ -58,16 +73,19 @@ button {
   }
 }
 
+.my-logo-small {
+  @extend %my-logo-shared;
+}
+
 .my-logo-header {
-  position: fixed;
-  top: 2%;
-  left: 50%;
-  transform: translate(-50%, 0);
+  @extend %my-logo-shared;
+  @include flex_justify_content;
+  margin-top: 0.5rem;
 
   .image-link {
     img {
       height: 2rem;
-      @extend %rotating-img
+      @include rotating-img
     }
 
     @media (any-hover: hover) {
@@ -76,19 +94,6 @@ button {
       }
     }
   }
-}
-
-table {
-  border-spacing: 0;
-}
-
-table td {
-  padding: 0;
-}
-
-a, a:link, a:visited {
-  text-decoration: none;
-  display: flex;
 }
 
 .main-table-image-link {
