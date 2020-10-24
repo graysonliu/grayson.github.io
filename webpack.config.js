@@ -63,8 +63,12 @@ module.exports = (env, argv) => {
                 template: "./src/template.ejs",
                 title: "Zijian Liu",
                 favicon: "./src/images/thinking.svg",
-                meta: [],
-
+                meta: [
+                    {
+                        name: 'viewport',
+                        content: 'width=device-width, initial-scale=1'
+                    }
+                ],
                 // for Google Analytics
                 googleAnalytics: {
                     measurement_id: 'G-D8J1Q3EMLC'
