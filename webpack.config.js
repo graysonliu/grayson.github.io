@@ -67,7 +67,7 @@ module.exports = (env, argv) => {
 
                 // for Google Analytics
                 googleAnalytics: {
-                    measurement_id: 'G-Z521MW9YCK'
+                    measurement_id: 'G-D8J1Q3EMLC'
                 },
             }),
             new SitemapPlugin('https://graysonliu.github.io', paths,
