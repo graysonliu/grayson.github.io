@@ -63,12 +63,12 @@ module.exports = (env, argv) => {
                 template: "./src/template.ejs",
                 title: "Zijian Liu",
                 favicon: "./src/images/thinking.svg",
-                meta: [
-                    {
-                        name: 'viewport',
-                        content: 'width=device-width, initial-scale=1'
-                    }
-                ],
+                meta: [],
+
+                // for Google Analytics
+                googleAnalytics: {
+                    measurement_id: 'G-Z521MW9YCK'
+                },
             }),
             new SitemapPlugin('https://graysonliu.github.io', paths,
                 {skipgzip: true})
