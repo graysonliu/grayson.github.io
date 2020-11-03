@@ -82,7 +82,8 @@ module.exports = (env, argv) => {
     if (isDevelopment) {
         config.devServer = {
             contentBase: path.join(__dirname, ""),
-            port: 3000,
+            host: '0.0.0.0',
+            port: 3002,
             hotOnly: true
         }
     }
